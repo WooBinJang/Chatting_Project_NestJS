@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
@@ -9,6 +10,7 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public')); //public 폴더 설정
   app.setBaseViewsDir(join(__dirname, '..', 'views')); //view 폴더 설정
   app.setViewEngine('hbs');
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(process.env.PORT);
 }

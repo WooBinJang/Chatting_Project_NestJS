@@ -2,6 +2,8 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
+
+import { ChatsModule } from './chats/chats.module';
 import * as mongoose from 'mongoose';
 
 @Module({
@@ -13,6 +15,7 @@ import * as mongoose from 'mongoose';
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),
+    ChatsModule,
   ],
   controllers: [AppController],
 })
